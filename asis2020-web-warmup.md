@@ -1,4 +1,4 @@
-## ASIS 2020 CTF - Warmup Web - Writeup
+## ASIS CTF Quals 2020 / Web WarmUp / Writeup
 
 ## Vulnerable code
 ```php
@@ -55,4 +55,3 @@ $flag = "ASIS{w4rm_up_y0ur_br4in}";
 ?>
 ```
 
-### Screenshot
